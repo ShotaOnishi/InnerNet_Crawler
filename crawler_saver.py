@@ -13,12 +13,11 @@ kill
 from bottle import route, run, request
 from get_pages import get_pages_from_google
 
-# curl -X GET "http://127.0.0.1:8080/get_pages?query=angularJS+elastic"
+# curl -X GET "http://127.0.0.1:8080/get_pages?query=react+Redux"
 @route('/get_pages')
 def get_pages():
     query = request.query.get('query')
     get_pages_from_google(query)
-    save_pages()
     return 'got page'
 
 run(host='localhost', port=8080, debug=True, reloader=True)
