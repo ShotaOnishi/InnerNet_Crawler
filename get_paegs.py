@@ -4,6 +4,7 @@ from selenium import webdriver
 import time
 import os.path
 import uuid
+from save_pages import save_pages
 
 def get_pages_from_google(query):
     # 来訪すべきURLのリスト取得
@@ -27,3 +28,7 @@ def get_pages_from_google(query):
         file_name = os.path.join(os.path.dirname(os.path.abspath("__file__")), 'saved_images', str(uuid.uuid4())+'page.png')
         browser.save_screenshot(file_name)
         time.sleep(1)
+
+if __name__ == "__main__":
+    query = sys.argv[1]
+    get_pages_from_google(query)
