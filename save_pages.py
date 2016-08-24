@@ -1,4 +1,10 @@
+import os
+
 def save_pages(tags=None, image=None, title=None, domain=None, url=None):
+    '''
+    tags: 配列
+    image, title, domain, url: string
+    '''
     POST_URL = "http://localhost:3000/api/v1/pages"
     image_f = "-F \'page[image]=@/%s\'" % (image)
     title_f = "-F \'page[title]=%s\'" % (title)

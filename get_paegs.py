@@ -25,8 +25,11 @@ def get_pages_from_google(query):
         url_links.append(url_link) # url_linksにurl_linkを追加していく
     for i in url_links:
         browser.get(i)
+        title = browser.title
+        url = browser.current_url
         file_name = os.path.join(os.path.dirname(os.path.abspath("__file__")), 'saved_images', str(uuid.uuid4())+'page.png')
         browser.save_screenshot(file_name)
+        save_pages(tags=query_list, image=file_name, title=title, domain="あとでdomain送るお", url=url)
         time.sleep(1)
 
 if __name__ == "__main__":
