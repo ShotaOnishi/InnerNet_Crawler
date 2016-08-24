@@ -8,7 +8,7 @@ import uuid
 def get_pages_from_google(query):
     # 来訪すべきURLのリスト取得
     GOOGLE_URL = 'http://www.google.com'
-    query = "MithrilJS"
+    query_list = query.split()
     url_links = []
     browser = webdriver.Firefox()
     browser.get(GOOGLE_URL)
