@@ -15,13 +15,14 @@ pip3 install selenium
 pip3 install bottle
 
 pip3 install uuid
+
+pip3 install tldextract  
 ```
 
 ヘッドレス化するためにPhantomJSを使う.
 ```
 brew install phantomjs
 ```
-
 
 ```
 python3 crawler_server.py
