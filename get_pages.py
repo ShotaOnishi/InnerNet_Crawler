@@ -4,6 +4,7 @@ from selenium import webdriver
 import time
 import os.path
 import uuid
+import tldextract
 from save_pages import save_pages
 
 def get_pages_from_google(query):
@@ -11,7 +12,7 @@ def get_pages_from_google(query):
     GOOGLE_URL = 'http://www.google.com'
     query_list = query.split()
     url_links = []
-    browser = webdriver.Firefox()
+    browser = webdriver.PhantomJS()
     browser.get(GOOGLE_URL)
     search_input = browser.find_element_by_name('q') #inputフォームを見つける
     search_input.send_keys(query) # そのフォームにqueryメッセージをぶち込む
@@ -27,9 +28,10 @@ def get_pages_from_google(query):
         browser.get(i)
         title = browser.title
         url = browser.current_url
+        domain = tldextract.extract(url).domain
         file_name = os.path.join(os.path.dirname(os.path.abspath("__file__")), 'saved_images', str(uuid.uuid4())+'page.png')
         browser.save_screenshot(file_name)
-        save_pages(tags=query_list, image=file_name, title=title, domain="あとでdomain送るお", url=url)
+        save_pages(tags=query_list, image=file_name, title=title, domain=domain, url=url)
         time.sleep(1)
 
 if __name__ == "__main__":
