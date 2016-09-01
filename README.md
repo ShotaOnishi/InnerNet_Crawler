@@ -24,6 +24,14 @@ pip3 install tldextract
 brew install phantomjs
 ```
 
+prologの利用
+```
+brew install swi-prolog
+
+swipl
+```
+
+起動
 ```
 python3 crawler_server.py
 
