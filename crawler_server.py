@@ -16,9 +16,14 @@ from get_pages import get_pages_from_google
 # curl -X GET "http://127.0.0.1:8080/get_pages?query=react+Redux"
 @route('/get_pages')
 def get_pages():
+    print("get_pagesへアクセスされました. ")
     response.set_header('Access-Control-Allow-Origin','*')
     query = request.query.get('query')
     get_pages_from_google(query)
     return 'got page'
+
+@route('/test')
+def test():
+    return 'test'
 
 run(host='localhost', port=8080, debug=True, reloader=True)
