@@ -12,7 +12,7 @@ def get_pages_from_google(query):
     GOOGLE_URL = 'http://www.google.com'
     query_list = query.split()
     url_links = []
-    browser = webdriver.PhantomJS()
+    browser = webdriver.Firefox()
     browser.get(GOOGLE_URL)
     search_input = browser.find_element_by_name('q') #inputフォームを見つける
     search_input.send_keys(query) # そのフォームにqueryメッセージをぶち込む
