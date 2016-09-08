@@ -17,17 +17,25 @@ import subprocess
 # curl -X GET "http://127.0.0.1:8080/get_pages?query=react+Redux"
 @route('/get_pages')
 def get_pages():
-    print("get_pagesへアクセスされました. ")
+    print("[CRAWLER_SERVER]get_pagesへアクセスされました. ")
     response.set_header('Access-Control-Allow-Origin','*')
     query = request.query.get('query')
-    for i in query:
-        cmd = "swipl -q -f ./prolog/main.pl -t main '%s' > query.txt"(i)
+    query_list=query.split()
+    print("[CRAWLER_SERVER]query_list=" + str(query_list))
+    for i in query_list:
+        cmd = "swipl -q -f ./prolog/main.pl -t main '%s' > query.txt" %(i)
         subprocess.call( cmd, shell=True)
         f = open('./query.txt', 'r')
         str_list = f.readlines()
         str_list = map(str.strip,str_list) #改行削除
         str_set = set(str_list)
+    str_list = list(str_set)
+    thesaurus = " ".join(str_list)
+    print("[CRAWLER_SERVER]str_list="+str(str_list))
+    print("[CRAWLER_SERVER]query="+query)
     get_pages_from_google(query)
+    print("[CRAWLER_SERVER]シソーラスでも検索")
+    get_pages_from_google(thesaurus)
     return 'got page'
 
 @route('/test')

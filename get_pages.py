@@ -32,17 +32,18 @@ def get_pages_from_google(query):
         browser.get(i)
         print("[GET PAGES]個別ページにアクセス")
         title = browser.title
-        print("[GET PAGES]title取得")
-        url = i
-        print("[GET PAGES]現在のurl")
+        print("[GET PAGES]title:"+title)
+        url = browser.current_url
+        print("[GET PAGES]url:"+i)
         domain = tldextract.extract(url).domain
-        print("[GET PAGES]urlのdomain")
+        print("[GET PAGES]domain:"+domain)
         file_name = os.path.join(os.path.dirname(os.path.abspath("__file__")), 'saved_images', str(uuid.uuid4())+'page.png')
-        print("[GET PAGES]いろいろなプロパティ取得")
         browser.save_screenshot(file_name)
         print("[GET PAGES]スクショ撮影")
         save_pages(tags=query_list, image=file_name, title=title, domain=domain, url=url)
+        print("[GET PAGES] -----周回なう------")
         time.sleep(1)
+    browser.close()
 
 if __name__ == "__main__":
     query = sys.argv[1]
