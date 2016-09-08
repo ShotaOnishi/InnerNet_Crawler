@@ -3,7 +3,6 @@ main :-
   ['./control.pl'],
   ['./knowledge.pl'],
   current_prolog_flag(argv, Argv),
-  format('Hello World, argv:~w\n', [Argv]),
-  write(Argv), 
-  write_lang,
+  nth0(0, Argv, Argument0),
+  write_library(Argument0),
   halt(0).
