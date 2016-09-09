@@ -11,7 +11,7 @@ kill
 '''
 
 from bottle import route, run, request, response
-from get_pages import get_pages_from_google
+from get_pages import get_pages_from_google, get_pages_from_qiita
 import subprocess
 
 # curl -X GET "http://127.0.0.1:8080/get_pages?query=react+Redux"
@@ -33,6 +33,9 @@ def get_pages():
     thesaurus = " ".join(str_list)
     print("[CRAWLER_SERVER]str_list="+str(str_list))
     print("[CRAWLER_SERVER]query="+query)
+    get_pages_from_qiita(query)
+    print("[CRAWLER_SERVER]シソーラスでも検索")
+    get_pages_from_qiita(thesaurus)
     get_pages_from_google(query)
     print("[CRAWLER_SERVER]シソーラスでも検索")
     get_pages_from_google(thesaurus)
