@@ -33,6 +33,7 @@ def get_pages():
     thesaurus = " ".join(str_list)
     print("[CRAWLER_SERVER]str_list="+str(str_list))
     print("[CRAWLER_SERVER]query="+query)
+    print("[CRAWLER_SERVER]thesaurus="+thesaurus)
     get_pages_from_qiita(query)
     print("[CRAWLER_SERVER]シソーラスでも検索")
     get_pages_from_qiita(thesaurus)
