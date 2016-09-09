@@ -1,4 +1,0 @@
-angularJS
-reactJS
-angularJS
-reactJS
