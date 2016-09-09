@@ -1,8 +1,8 @@
-language(javaScript).
+language(javascript).
 language(python).
-language(commonLisp).
+language(commonlisp).
 language(ruby).
 language(prolog).
-library(javascript, angularJS).
-library(javascript, reactJS).
+library(javascript, angularjs).
+library(javascript, reactjs).
 library(python, bottle).
